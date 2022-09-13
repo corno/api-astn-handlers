@@ -13,14 +13,14 @@ export type Wrapping =
 
 export type OpenObject = {
     readonly "type":
-    | ["verbose group", {}]
-    | ["dictionary", {}]
+    | ["verbose group", null]
+    | ["dictionary", null]
 }
 
 export type OpenArray = {
     readonly "type":
-    | ["shorthand group", {}]
-    | ["list", {}]
+    | ["shorthand group", null]
+    | ["list", null]
 }
 
 export type SimpleString = {
