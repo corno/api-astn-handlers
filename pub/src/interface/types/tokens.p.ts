@@ -6,9 +6,9 @@ export type TAnnotatedToken<Token, PAnnotation> = {
 }
 
 export type TWrapping =
-    | ["quote", { }]
-    | ["apostrophe", { }]
-    | ["none", { }]
+    | ["quote", null]
+    | ["apostrophe", null]
+    | ["none", null]
 
 
 export type TOpenObject = {
