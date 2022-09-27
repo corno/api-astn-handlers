@@ -1,82 +1,82 @@
-import * as grammar from "../types/tokens"
+import * as types from "../types/tokens.p"
 
-export type IObjectHandler<Annotation> = {
-    property: (
+export type IObjectHandler<PAnnotation> = {
+    readonly "property": (
         $: {
-            token: grammar.SimpleStringToken<Annotation>
+            readonly "token": types.TSimpleStringToken<PAnnotation>
         }
-    ) => IRequiredValueHandler<Annotation>
-    anonymousProperty: (
+    ) => IRequiredValueHandler<PAnnotation>
+    readonly "anonymousProperty": (
         $: {
-            annotation: Annotation
+            readonly "annotation": PAnnotation
         }
-    ) => IValueHandler<Annotation>
-    onEnd: ($: {
-        token: grammar.CloseObjectToken<Annotation>
+    ) => IValueHandler<PAnnotation>
+    readonly "onEnd": ($: {
+        readonly "token": types.TCloseObjectToken<PAnnotation>
     }) => void
 }
 
-export type IArrayHandler<Annotation> = {
-    element: (
+export type IArrayHandler<PAnnotation> = {
+    readonly "element": (
         $: {
-            annotation: Annotation
+            readonly "annotation": PAnnotation
         }
-    ) => IValueHandler<Annotation>
-    onEnd: ($: {
-        token: grammar.CloseArrayToken<Annotation>
+    ) => IValueHandler<PAnnotation>
+    readonly "onEnd": ($: {
+        readonly "token": types.TCloseArrayToken<PAnnotation>
     }) => void
 }
 
-export type ITaggedUnionHandler<Annotation> = {
-    option: ($: {
-        token: grammar.SimpleStringToken<Annotation>
-    }) => IRequiredValueHandler<Annotation>
-    missingOption: ($: {
-        annotation: Annotation
-    }) => IRequiredValueHandler<Annotation>
-    end: ($: {}) => void
+export type ITaggedUnionHandler<PAnnotation> = {
+    readonly "option": ($: {
+        readonly "token": types.TSimpleStringToken<PAnnotation>
+    }) => IRequiredValueHandler<PAnnotation>
+    readonly "missingOption": ($: {
+        readonly "annotation": PAnnotation
+    }) => IRequiredValueHandler<PAnnotation>
+    readonly "end": ($: {}) => void
 }
 
-export type OnObject<Annotation> = ($: {
-    token: grammar.OpenObjectToken<Annotation>
-}) => IObjectHandler<Annotation>
+export type OnObject<PAnnotation> = ($: {
+    readonly "token": types.TOpenObjectToken<PAnnotation>
+}) => IObjectHandler<PAnnotation>
 
-export type OnArray<Annotation> = ($: {
-    token: grammar.OpenArrayToken<Annotation>
-}) => IArrayHandler<Annotation>
+export type OnArray<PAnnotation> = ($: {
+    readonly "token": types.TOpenArrayToken<PAnnotation>
+}) => IArrayHandler<PAnnotation>
 
-export type OnSimpleString<Annotation> = ($: {
-    token: grammar.SimpleStringToken<Annotation>
+export type OnSimpleString<PAnnotation> = ($: {
+    readonly "token": types.TSimpleStringToken<PAnnotation>
 }) => void
 
-export type OnMultilineString<Annotation> = ($: {
-    token: grammar.MultilineStringToken<Annotation>
+export type OnMultilineString<PAnnotation> = ($: {
+    readonly "token": types.TMultilineStringToken<PAnnotation>
 }) => void
 
-export type OnTaggedUnion<Annotation> = ($: {
-    token: grammar.TaggedUnionToken<Annotation>
-}) => ITaggedUnionHandler<Annotation>
+export type OnTaggedUnion<PAnnotation> = ($: {
+    readonly "token": types.TTaggedUnionToken<PAnnotation>
+}) => ITaggedUnionHandler<PAnnotation>
 
-export type OnMissing<Annotation> = (
+export type OnMissing<PAnnotation> = (
     $: {
-        annotation: Annotation
+        readonly "annotation": PAnnotation
     }
 ) => void
 
-export type IRequiredValueHandler<Annotation> = {
-    exists: IValueHandler<Annotation>
-    missing: OnMissing<Annotation>
+export type IRequiredValueHandler<PAnnotation> = {
+    readonly "exists": IValueHandler<PAnnotation>
+    readonly "missing": OnMissing<PAnnotation>
 }
 
-export type IValueHandler<Annotation> = {
-    object: OnObject<Annotation>
-    array: OnArray<Annotation>
-    multilineString: OnMultilineString<Annotation>
-    simpleString: OnSimpleString<Annotation>
-    taggedUnion: OnTaggedUnion<Annotation>
+export type IValueHandler<PAnnotation> = {
+    readonly "object": OnObject<PAnnotation>
+    readonly "array": OnArray<PAnnotation>
+    readonly "multilineString": OnMultilineString<PAnnotation>
+    readonly "simpleString": OnSimpleString<PAnnotation>
+    readonly "taggedUnion": OnTaggedUnion<PAnnotation>
 }
 
-export type ITreeHandler<Annotation> = {
-    root: IRequiredValueHandler<Annotation>
-    onEnd: () => void
+export type ITreeHandler<PAnnotation> = {
+    readonly "root": IRequiredValueHandler<PAnnotation>
+    readonly "onEnd": () => void
 }

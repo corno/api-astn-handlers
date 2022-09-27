@@ -1,53 +1,53 @@
 import * as pt from "pareto-core-types"
 
-export type AnnotatedToken<Token, Annotation> = {
+export type TAnnotatedToken<Token, PAnnotation> = {
     readonly "token": Token
-    readonly "annotation": Annotation
+    readonly "annotation": PAnnotation
 }
 
-export type Wrapping =
+export type TWrapping =
     | ["quote", { }]
     | ["apostrophe", { }]
     | ["none", { }]
 
 
-export type OpenObject = {
+export type TOpenObject = {
     readonly "type":
     | ["verbose group", null]
     | ["dictionary", null]
 }
 
-export type OpenArray = {
+export type TOpenArray = {
     readonly "type":
     | ["shorthand group", null]
     | ["list", null]
 }
 
-export type SimpleString = {
-    readonly "wrapping": Wrapping
+export type TSimpleString = {
+    readonly "wrapping": TWrapping
     readonly "value": string
 }
 
-export type MultilineString = {
+export type TMultilineString = {
     readonly "lines": pt.Array<string>
 }
 
-export type CloseObject = { }
+export type TCloseObject = null
 
-export type CloseArray = { }
+export type TCloseArray = null
 
-export type TaggedUnion = { }
+export type TTaggedUnion = null
 
-export type CloseArrayToken<Annotation> = AnnotatedToken<CloseArray, Annotation>
+export type TCloseArrayToken<PAnnotation> = TAnnotatedToken<TCloseArray, PAnnotation>
 
-export type CloseObjectToken<Annotation>  = AnnotatedToken<CloseObject, Annotation>
+export type TCloseObjectToken<PAnnotation>  = TAnnotatedToken<TCloseObject, PAnnotation>
 
-export type OpenArrayToken<Annotation> = AnnotatedToken<OpenArray, Annotation>
+export type TOpenArrayToken<PAnnotation> = TAnnotatedToken<TOpenArray, PAnnotation>
 
-export type OpenObjectToken<Annotation> = AnnotatedToken<OpenObject, Annotation>
+export type TOpenObjectToken<PAnnotation> = TAnnotatedToken<TOpenObject, PAnnotation>
 
-export type SimpleStringToken<Annotation> = AnnotatedToken<SimpleString, Annotation>
+export type TSimpleStringToken<PAnnotation> = TAnnotatedToken<TSimpleString, PAnnotation>
 
-export type MultilineStringToken<Annotation> = AnnotatedToken<MultilineString, Annotation>
+export type TMultilineStringToken<PAnnotation> = TAnnotatedToken<TMultilineString, PAnnotation>
 
-export type TaggedUnionToken<Annotation> = AnnotatedToken<TaggedUnion, Annotation>
+export type TTaggedUnionToken<PAnnotation> = TAnnotatedToken<TTaggedUnion, PAnnotation>
