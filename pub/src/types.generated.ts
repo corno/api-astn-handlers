@@ -3,12 +3,12 @@ import * as pt from 'pareto-core-types'
 
 export namespace VAnnotatedToken {}
 export type VAnnotatedToken<AToken> = {
-    readonly 'annotation': AAnnotation
+    readonly 'annotation': HAnnotation
     readonly 'token': AToken
 }
 
 export type MAnnotatedToken<AToken> = VAnnotatedToken<AToken>
-export type UAnnotation = AAnnotation
+export type UAnnotation = HAnnotation
 
 export namespace GCloseArray {}
 export type GCloseArray = {}

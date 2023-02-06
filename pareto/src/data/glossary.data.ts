@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, parameter, template
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, typeParameter, glossaryParameter, template
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -24,13 +24,13 @@ export const $: mglossary.TGlossary = {
                 "Token": {},
             }),
             'type': group({
-                "token": member(parameter("Token")),
-                "annotation": member(parameter("Annotation")),
+                "token": member(typeParameter("Token")),
+                "annotation": member(glossaryParameter("Annotation")),
             }),
         }
     }),
     'types': types({
-        "Annotation": parameter("Annotation"),
+        "Annotation": glossaryParameter("Annotation"),
         "CloseArray": group({}),
         "CloseArrayToken": template("AnnotatedToken", { "Type": reference("CloseArray") }),
         "CloseObject": group({}),
