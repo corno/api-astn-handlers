@@ -1,28 +1,17 @@
 {
   "author": "Corno",
-  "bin": {},
-  "files": [
-    "dist",
-    "data"
-  ],
-  "keywords": [],
-  "main": "./dist/index.js",
-  "bugs": {
-    "url": "https://github.com/corno/astn/issues"
-  },
-  "description": "parser for ASTN",
-  "homepage": "https://github.com/corno/astn#readme",
   "license": "ISC",
-  "name": "api-astn-handlers",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/corno/api-astn-handlers.git"
-  },
-  "types": "dist/index.d.ts",
-  "version": "0.3.0",
+  "description": "an interface that is implementented and consumed by mulitple libraries",
+
   "dependencies": {
-    "pareto-core-types": "^0.6.0"
+    "pareto-core-types": "^0.10.0"
   },
-  "interface-fingerprint": "48e47a5794bc21615c8c2dfa33099f63987151ee",
-  "content-fingerprint": "3e7b5d9cdec3c9882a8287b7b07c94d5b208cd5a"
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }
