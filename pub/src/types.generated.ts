@@ -1,123 +1,139 @@
 import * as pt from 'pareto-core-types'
 
 
-export namespace VAnnotatedToken {}
-export type VAnnotatedToken<AToken> = {
-    readonly 'annotation': HAnnotation
-    readonly 'token': AToken
-}
-
-export type MAnnotatedToken<AToken> = VAnnotatedToken<AToken>
-export type UAnnotation = HAnnotation
-
-export namespace GCloseArray {}
-export type GCloseArray = {}
-export type UCloseArray = GCloseArray
-
-export namespace GCloseArrayToken {}
-export type GCloseArrayToken = MAnnotatedToken<UCloseArray>
-export type UCloseArrayToken = GCloseArrayToken
-
-export namespace GCloseObject {}
-export type GCloseObject = {}
-export type UCloseObject = GCloseObject
-
-export namespace GCloseObjectToken {}
-export type GCloseObjectToken = MAnnotatedToken<UCloseObject>
-export type UCloseObjectToken = GCloseObjectToken
-
-export namespace GMultilineString {
+export namespace T {
     
-    export namespace Plines {}
-    export type Plines = pt.Array<string>
-}
-export type GMultilineString = {
-    readonly 'lines': GMultilineString.Plines
-}
-export type UMultilineString = GMultilineString
-
-export namespace GMultilineStringToken {}
-export type GMultilineStringToken = MAnnotatedToken<UMultilineString>
-export type UMultilineStringToken = GMultilineStringToken
-
-export namespace GOpenArray {
-    
-    export namespace Ptype {
+    export namespace AnnotatedToken {
         
-        export namespace Olist {}
-        export type Olist = {}
+        export type annotation<GPAnnotation, AToken> = GPAnnotation
         
-        export namespace Oshorthand__group {}
-        export type Oshorthand__group = {}
+        export type token<GPAnnotation, AToken> = AToken
     }
-    export type Ptype = 
-        | ['list', Ptype.Olist]
-        | ['shorthand group', Ptype.Oshorthand__group]
-}
-export type GOpenArray = {
-    readonly 'type': GOpenArray.Ptype
-}
-export type UOpenArray = GOpenArray
-
-export namespace GOpenArrayToken {}
-export type GOpenArrayToken = MAnnotatedToken<UOpenArray>
-export type UOpenArrayToken = GOpenArrayToken
-
-export namespace GOpenObject {
     
-    export namespace Ptype {
-        
-        export namespace Odictionary {}
-        export type Odictionary = {}
-        
-        export namespace Overbose__group {}
-        export type Overbose__group = {}
+    export type AnnotatedToken<GPAnnotation, AToken> = {
+        readonly 'annotation': GPAnnotation
+        readonly 'token': AToken
     }
-    export type Ptype = 
-        | ['dictionary', Ptype.Odictionary]
-        | ['verbose group', Ptype.Overbose__group]
-}
-export type GOpenObject = {
-    readonly 'type': GOpenObject.Ptype
-}
-export type UOpenObject = GOpenObject
-
-export namespace GOpenObjectToken {}
-export type GOpenObjectToken = MAnnotatedToken<UOpenObject>
-export type UOpenObjectToken = GOpenObjectToken
-
-export namespace GSimpleString {}
-export type GSimpleString = {
-    readonly 'value': string
-    readonly 'wrapping': UWrapping
-}
-export type USimpleString = GSimpleString
-
-export namespace GSimpleStringToken {}
-export type GSimpleStringToken = MAnnotatedToken<USimpleString>
-export type USimpleStringToken = GSimpleStringToken
-
-export namespace GTaggedUnion {}
-export type GTaggedUnion = {}
-export type UTaggedUnion = GTaggedUnion
-
-export namespace GTaggedUnionToken {}
-export type GTaggedUnionToken = MAnnotatedToken<UTaggedUnion>
-export type UTaggedUnionToken = GTaggedUnionToken
-
-export namespace GWrapping {
     
-    export namespace Oapostrophe {}
-    export type Oapostrophe = {}
+    export type Annotation<GPAnnotation> = GPAnnotation
     
-    export namespace Onone {}
-    export type Onone = {}
+    export namespace CloseArray {}
     
-    export namespace Oquote {}
-    export type Oquote = {}
+    export type CloseArray<GPAnnotation> = {}
+    
+    export type CloseArrayToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.CloseArray<GPAnnotation>>
+    
+    export namespace CloseObject {}
+    
+    export type CloseObject<GPAnnotation> = {}
+    
+    export type CloseObjectToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.CloseObject<GPAnnotation>>
+    
+    export namespace MultilineString {
+        
+        export namespace lines {
+            
+            export type A<GPAnnotation> = string
+        }
+        
+        export type lines<GPAnnotation> = pt.Array<string>
+    }
+    
+    export type MultilineString<GPAnnotation> = {
+        readonly 'lines': pt.Array<string>
+    }
+    
+    export type MultilineStringToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.MultilineString<GPAnnotation>>
+    
+    export namespace OpenArray {
+        
+        export namespace _ltype {
+            
+            export namespace list {}
+            
+            export type list<GPAnnotation> = {}
+            
+            export namespace shorthand__group {}
+            
+            export type shorthand__group<GPAnnotation> = {}
+        }
+        
+        export type _ltype<GPAnnotation> = 
+            | ['list', {}]
+            | ['shorthand group', {}]
+    }
+    
+    export type OpenArray<GPAnnotation> = {
+        readonly 'type': 
+            | ['list', {}]
+            | ['shorthand group', {}]
+    }
+    
+    export type OpenArrayToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.OpenArray<GPAnnotation>>
+    
+    export namespace OpenObject {
+        
+        export namespace _ltype {
+            
+            export namespace dictionary {}
+            
+            export type dictionary<GPAnnotation> = {}
+            
+            export namespace verbose__group {}
+            
+            export type verbose__group<GPAnnotation> = {}
+        }
+        
+        export type _ltype<GPAnnotation> = 
+            | ['dictionary', {}]
+            | ['verbose group', {}]
+    }
+    
+    export type OpenObject<GPAnnotation> = {
+        readonly 'type': 
+            | ['dictionary', {}]
+            | ['verbose group', {}]
+    }
+    
+    export type OpenObjectToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.OpenObject<GPAnnotation>>
+    
+    export namespace SimpleString {
+        
+        export type value<GPAnnotation> = string
+        
+        export type wrapping<GPAnnotation> = T.Wrapping<GPAnnotation>
+    }
+    
+    export type SimpleString<GPAnnotation> = {
+        readonly 'value': string
+        readonly 'wrapping': T.Wrapping<GPAnnotation>
+    }
+    
+    export type SimpleStringToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.SimpleString<GPAnnotation>>
+    
+    export namespace TaggedUnion {}
+    
+    export type TaggedUnion<GPAnnotation> = {}
+    
+    export type TaggedUnionToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.TaggedUnion<GPAnnotation>>
+    
+    export namespace Wrapping {
+        
+        export namespace apostrophe {}
+        
+        export type apostrophe<GPAnnotation> = {}
+        
+        export namespace none {}
+        
+        export type none<GPAnnotation> = {}
+        
+        export namespace quote {}
+        
+        export type quote<GPAnnotation> = {}
+    }
+    
+    export type Wrapping<GPAnnotation> = 
+        | ['apostrophe', {}]
+        | ['none', {}]
+        | ['quote', {}]
 }
-export type GWrapping = 
-    | ['apostrophe', GWrapping.Oapostrophe]
-    | ['none', GWrapping.Onone]
-    | ['quote', GWrapping.Oquote]
-export type UWrapping = GWrapping

@@ -7,67 +7,64 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, typeParameter, glossaryParameter, template
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, typeParameter, glossaryParameter, parametrizedType, type, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pr.wrapRawDictionary
 
-export const $: mglossary.TGlossary = {
+export const $: mglossary.T.Glossary<string> = {
     'imports': d({
     }),
-    'parameters': d({}),
-    'templates': d({
-        "AnnotatedToken": {
-            'parameters': d({
-                "Token": {},
-            }),
-            'type': group({
-                "token": member(typeParameter("Token")),
-                "annotation": member(glossaryParameter("Annotation")),
-            }),
-        }
+    'parameters': d({
+        "Annotation": {},
     }),
-    'types': types({
-        "Annotation": glossaryParameter("Annotation"),
-        "CloseArray": group({}),
-        "CloseArrayToken": template("AnnotatedToken", { "Type": reference("CloseArray") }),
-        "CloseObject": group({}),
-        "CloseObjectToken": template("AnnotatedToken", { "Type": reference("CloseObject") }),
-        "MultilineString": group({
+    'types': d({
+        "AnnotatedToken": parametrizedType({
+            "Token": {},
+        }, group({
+            "token": member(typeParameter("Token")),
+            "annotation": member(glossaryParameter("Annotation")),
+        })),
+        "Annotation": type(glossaryParameter("Annotation")),
+        "CloseArray": type(group({})),
+        "CloseArrayToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("CloseArray") })),
+        "CloseObject": type(group({})),
+        "CloseObjectToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("CloseObject") })),
+        "MultilineString": type(group({
             "lines": member(array(string()))
-        }),
-        "MultilineStringToken": template("AnnotatedToken", { "Type": reference("MultilineString") }),
+        })),
+        "MultilineStringToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("MultilineString") })),
 
-        "OpenArray": group({
+        "OpenArray": type(group({
             "type": member(taggedUnion({
                 "shorthand group": group({}),
                 "list": group({}),
             }))
-        }),
-        "OpenArrayToken": template("AnnotatedToken", { "Type": reference("OpenArray") }),
+        })),
+        "OpenArrayToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("OpenArray") })),
 
-        "OpenObject": group({
+        "OpenObject": type(group({
             "type": member(taggedUnion({
                 "verbose group": group({}),
                 "dictionary": group({}),
             }))
-        }),
-        "OpenObjectToken": template("AnnotatedToken", { "Type": reference("OpenObject") }),
+        })),
+        "OpenObjectToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("OpenObject") })),
 
-        "SimpleString": group({
+        "SimpleString": type(group({
             "wrapping": member(reference("Wrapping")),
             "value": member(string())
-        }),
-        "SimpleStringToken": template("AnnotatedToken", { "Type": reference("SimpleString") }),
-        "TaggedUnion": group({}),
-        "TaggedUnionToken": template("AnnotatedToken", { "Type": reference("TaggedUnion") }),
-        "Wrapping": taggedUnion({
+        })),
+        "SimpleStringToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("SimpleString") })),
+        "TaggedUnion": type(group({})),
+        "TaggedUnionToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("TaggedUnion") })),
+        "Wrapping": type( taggedUnion({
             "quote": group({}),
             "apostrophe": group({}),
             "none": group({}),
-        }),
+        })),
     }),
     'interfaces': d({
         "ArrayHandler": ['group', {

@@ -1,83 +1,51 @@
 import * as pt from 'pareto-core-types'
 
-import * as t from './types.generated'
+import { T   } from './types.generated'
 
 
-export type TAnnotation = t.UAnnotation
-
-export type TCloseArray = t.UCloseArray
-
-export type TCloseArrayToken = t.UCloseArrayToken
-
-export type TCloseObject = t.UCloseObject
-
-export type TCloseObjectToken = t.UCloseObjectToken
-
-export type TMultilineString = t.UMultilineString
-
-export type TMultilineStringToken = t.UMultilineStringToken
-
-export type TOpenArray = t.UOpenArray
-
-export type TOpenArrayToken = t.UOpenArrayToken
-
-export type TOpenObject = t.UOpenObject
-
-export type TOpenObjectToken = t.UOpenObjectToken
-
-export type TSimpleString = t.USimpleString
-
-export type TSimpleStringToken = t.USimpleStringToken
-
-export type TTaggedUnion = t.UTaggedUnion
-
-export type TTaggedUnionToken = t.UTaggedUnionToken
-
-export type TWrapping = t.UWrapping
-
-export type IArrayHandler = {
-    'element': ($: TAnnotation, ) => IValueHandler
-    'onEnd': ($: TCloseArrayToken, ) => void
+export type IArrayHandler<GPAnnotation> = {
+    'element': ($: T.Annotation<GPAnnotation>, ) => IValueHandler<GPAnnotation>
+    'onEnd': ($: T.CloseArrayToken<GPAnnotation>, ) => void
 }
 
-export type IObjectHandler = {
-    'anonymousProperty': ($: TAnnotation, ) => IValueHandler
-    'onEnd': ($: TCloseObjectToken, ) => void
-    'property': ($: TSimpleStringToken, ) => IRequiredValueHandler
+export type IObjectHandler<GPAnnotation> = {
+    'anonymousProperty': ($: T.Annotation<GPAnnotation>, ) => IValueHandler<GPAnnotation>
+    'onEnd': ($: T.CloseObjectToken<GPAnnotation>, ) => void
+    'property': ($: T.SimpleStringToken<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
 }
 
-export type IOnArray = ($: TOpenArrayToken, ) => IArrayHandler
+export type IOnArray<GPAnnotation> = ($: T.OpenArrayToken<GPAnnotation>, ) => IArrayHandler<GPAnnotation>
 
-export type IOnMissing = ($: TAnnotation, ) => void
+export type IOnMissing<GPAnnotation> = ($: T.Annotation<GPAnnotation>, ) => void
 
-export type IOnMultilineString = ($: TMultilineStringToken, ) => void
+export type IOnMultilineString<GPAnnotation> = ($: T.MultilineStringToken<GPAnnotation>, ) => void
 
-export type IOnObject = ($: TOpenObjectToken, ) => IObjectHandler
+export type IOnObject<GPAnnotation> = ($: T.OpenObjectToken<GPAnnotation>, ) => IObjectHandler<GPAnnotation>
 
-export type IOnSimpleString = ($: TSimpleStringToken, ) => void
+export type IOnSimpleString<GPAnnotation> = ($: T.SimpleStringToken<GPAnnotation>, ) => void
 
-export type IOnTaggedUnion = ($: TTaggedUnionToken, ) => ITaggedUnionHandler
+export type IOnTaggedUnion<GPAnnotation> = ($: T.TaggedUnionToken<GPAnnotation>, ) => ITaggedUnionHandler<GPAnnotation>
 
-export type IRequiredValueHandler = {
-    'missing': IOnMissing
-    'root': IValueHandler
+export type IRequiredValueHandler<GPAnnotation> = {
+    'missing': IOnMissing<GPAnnotation>
+    'root': IValueHandler<GPAnnotation>
 }
 
-export type ITaggedUnionHandler = {
-    'missingOption': ($: TAnnotation, ) => IRequiredValueHandler
+export type ITaggedUnionHandler<GPAnnotation> = {
+    'missingOption': ($: T.Annotation<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
     'onEnd': () => void
-    'option': ($: TSimpleStringToken, ) => IRequiredValueHandler
+    'option': ($: T.SimpleStringToken<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
 }
 
-export type ITreeHandler = {
+export type ITreeHandler<GPAnnotation> = {
     'onEnd': () => void
-    'root': IRequiredValueHandler
+    'root': IRequiredValueHandler<GPAnnotation>
 }
 
-export type IValueHandler = {
-    'array': IOnArray
-    'multilineString': IOnMultilineString
-    'object': IOnObject
-    'simpleString': IOnSimpleString
-    'taggedUnion': IOnTaggedUnion
+export type IValueHandler<GPAnnotation> = {
+    'array': IOnArray<GPAnnotation>
+    'multilineString': IOnMultilineString<GPAnnotation>
+    'object': IOnObject<GPAnnotation>
+    'simpleString': IOnSimpleString<GPAnnotation>
+    'taggedUnion': IOnTaggedUnion<GPAnnotation>
 }
