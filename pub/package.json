@@ -4,7 +4,7 @@
   "description": "an interface that is implementented and consumed by mulitple libraries",
 
   "dependencies": {
-    "pareto-core-types": "^0.10.0"
+    "pareto-core-types": "^0.0.0"
   },
   "files": [
     "dist"
