@@ -27,8 +27,8 @@ export type IOnSimpleString<GPAnnotation> = ($: T.SimpleStringToken<GPAnnotation
 export type IOnTaggedUnion<GPAnnotation> = ($: T.TaggedUnionToken<GPAnnotation>, ) => ITaggedUnionHandler<GPAnnotation>
 
 export type IRequiredValueHandler<GPAnnotation> = {
+    'exists': IValueHandler<GPAnnotation>
     'missing': IOnMissing<GPAnnotation>
-    'root': IValueHandler<GPAnnotation>
 }
 
 export type ITaggedUnionHandler<GPAnnotation> = {

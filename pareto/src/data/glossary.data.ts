@@ -44,7 +44,6 @@ export const $: mglossary.T.Glossary<string> = {
             }))
         })),
         "OpenArrayToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("OpenArray") })),
-
         "OpenObject": type(group({
             "type": member(taggedUnion({
                 "verbose group": group({}),
@@ -52,7 +51,6 @@ export const $: mglossary.T.Glossary<string> = {
             }))
         })),
         "OpenObjectToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("OpenObject") })),
-
         "SimpleString": type(group({
             "wrapping": member(reference("Wrapping")),
             "value": member(string())
@@ -86,12 +84,9 @@ export const $: mglossary.T.Glossary<string> = {
         "OnObject": method(typeReference("OpenObjectToken"), ['reference', interfaceReference("ObjectHandler")], false),
         "OnSimpleString": method(typeReference("SimpleStringToken")),
         "OnTaggedUnion": method(typeReference("TaggedUnionToken"), ['reference', interfaceReference("TaggedUnionHandler")], false),
-
-
-
         "RequiredValueHandler": ['group', {
             'members': d({
-                "root": ['reference', interfaceReference("ValueHandler")],
+                "exists": ['reference', interfaceReference("ValueHandler")],
                 "missing": ['reference', interfaceReference("OnMissing")],
             }),
         }],
@@ -117,7 +112,6 @@ export const $: mglossary.T.Glossary<string> = {
                 "taggedUnion": ['reference', interfaceReference("OnTaggedUnion")],
             }),
         }],
-
     }),
     'functions': d({
     }),
