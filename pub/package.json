@@ -2,19 +2,16 @@
   "author": "Corno",
   "license": "ISC",
   "description": "an interface that is implementented and consumed by mulitple libraries",
+
   "dependencies": {
-    "pareto-core-types": "^0.10.0"
+    "pareto-core-types": "^0.0.0"
   },
   "files": [
     "dist"
   ],
   "repository": {
-    "type": "git",
-    "url": "http://github.com/corno/glo-astn-handlers.git"
+    "type": "git"
   },
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "name": "glo-astn-handlers",
-  "version": "0.1.0",
-  "content-fingerprint": "8be9040cadb7ec54d59ec4d8aa6dc66b5678b5f3"
+  "types": "dist/index.d.ts"
 }
