@@ -11,7 +11,7 @@ export const $: mproject.T.Project = {
     'description': "an interface that is implementented and consumed by mulitple libraries",
     'license': "ISC",
 
-    'pubdependencies': d({
+    'dependencies': d({
     }),
     'type': ['glossary', {
         'glossary': glossary,
