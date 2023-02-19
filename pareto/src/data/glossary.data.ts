@@ -12,9 +12,9 @@ import {
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
-const d = pd.wrapRawDictionary
+const d = pd.d
 
-export const $: mglossary.T.Glossary<string> = {
+export const $: mglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
     }),
     'parameters': d({
@@ -36,7 +36,6 @@ export const $: mglossary.T.Glossary<string> = {
             "lines": member(array(string()))
         })),
         "MultilineStringToken": type(parametrizedReference("AnnotatedToken", { "Type": typeReference("MultilineString") })),
-
         "OpenArray": type(group({
             "type": member(taggedUnion({
                 "shorthand group": group({}),
