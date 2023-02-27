@@ -8,8 +8,8 @@ import { $ as glossary } from "./glossary.data"
 
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
-    'description': "an interface that is implementented and consumed by mulitple libraries",
-    'license': "ISC",
+    'description': "an interface for streaming an untyped ASTN dataset. implemented and consumed by multiple packages",
+    'license': "TBD",
 
     'dependencies': d({
     }),
