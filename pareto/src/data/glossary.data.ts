@@ -18,11 +18,11 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
     }),
     'parameters': d({
-        "Annotation": {},
+        "Annotation": null,
     }),
     'types': d({
         "AnnotatedToken": parametrizedType({
-            "Token": {},
+            "Token": null,
         }, group({
             "token": member(typeParameter("Token")),
             "annotation": member(glossaryParameter("Annotation")),
