@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, typeParameter, glossaryParameter, parametrizedType, type, parametrizedReference
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, interfaceMethod, typeParameter, glossaryParameter, parametrizedType, type, parametrizedReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -61,26 +61,28 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "none": group({}),
         })),
     }),
+    'builders': d({
+    }),
     'interfaces': d({
         "ArrayHandler": ['group', {
             'members': d({
-                "element": method(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")], false),
-                "onEnd": method(typeReference("CloseArrayToken"))
+                "element": interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")]),
+                "onEnd": interfaceMethod(typeReference("CloseArrayToken"))
             })
         }],
         "ObjectHandler": ['group', {
             'members': d({
-                "property": method(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")], false),
-                "anonymousProperty": method(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")], false),
-                "onEnd": method(typeReference("CloseObjectToken")),
+                "property": interfaceMethod(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")]),
+                "anonymousProperty": interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")]),
+                "onEnd": interfaceMethod(typeReference("CloseObjectToken")),
             }),
         }],
-        "OnArray": method(typeReference("OpenArrayToken"), ['reference', interfaceReference("ArrayHandler")], false),
-        "OnMissing": method(typeReference("Annotation")),
-        "OnMultilineString": method(typeReference("MultilineStringToken")),
-        "OnObject": method(typeReference("OpenObjectToken"), ['reference', interfaceReference("ObjectHandler")], false),
-        "OnSimpleString": method(typeReference("SimpleStringToken")),
-        "OnTaggedUnion": method(typeReference("TaggedUnionToken"), ['reference', interfaceReference("TaggedUnionHandler")], false),
+        "OnArray": interfaceMethod(typeReference("OpenArrayToken"), ['reference', interfaceReference("ArrayHandler")]),
+        "OnMissing": interfaceMethod(typeReference("Annotation")),
+        "OnMultilineString": interfaceMethod(typeReference("MultilineStringToken")),
+        "OnObject": interfaceMethod(typeReference("OpenObjectToken"), ['reference', interfaceReference("ObjectHandler")]),
+        "OnSimpleString": interfaceMethod(typeReference("SimpleStringToken")),
+        "OnTaggedUnion": interfaceMethod(typeReference("TaggedUnionToken"), ['reference', interfaceReference("TaggedUnionHandler")]),
         "RequiredValueHandler": ['group', {
             'members': d({
                 "exists": ['reference', interfaceReference("ValueHandler")],
@@ -89,15 +91,15 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         }],
         "TaggedUnionHandler": ['group', {
             'members': d({
-                "option": method(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")], false),
-                "missingOption": method(typeReference("Annotation"), ['reference', interfaceReference("RequiredValueHandler")], false),
-                "onEnd": method(null),
+                "option": interfaceMethod(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")]),
+                "missingOption": interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("RequiredValueHandler")]),
+                "onEnd": interfaceMethod(null),
             })
         }],
         "TreeHandler": ['group', {
             'members': d({
                 "root": ['reference', interfaceReference("RequiredValueHandler")],
-                "onEnd": method(null),
+                "onEnd": interfaceMethod(null),
             }),
         }],
         "ValueHandler": ['group', {

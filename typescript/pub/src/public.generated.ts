@@ -1,51 +1,58 @@
 import * as pt from 'pareto-core-types'
 
-import { T   } from './types.generated'
+import { T } from './types.generated'
 
 
-export type IArrayHandler<GPAnnotation> = {
-    'element': ($: T.Annotation<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-    'onEnd': ($: T.CloseArrayToken<GPAnnotation>, ) => void
+export namespace I {
+    
+    export type ArrayHandler<GAnnotation> = {
+        'element': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'onEnd': ($: T.CloseArrayToken<GAnnotation>, ) => void
+    }
+    
+    export type ObjectHandler<GAnnotation> = {
+        'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'onEnd': ($: T.CloseObjectToken<GAnnotation>, ) => void
+        'property': ($: T.SimpleStringToken<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
+    }
+    
+    export type OnArray<GAnnotation> = ($: T.OpenArrayToken<GAnnotation>, ) => I.ArrayHandler<GAnnotation>
+    
+    export type OnMissing<GAnnotation> = ($: T.Annotation<GAnnotation>, ) => void
+    
+    export type OnMultilineString<GAnnotation> = ($: T.MultilineStringToken<GAnnotation>, ) => void
+    
+    export type OnObject<GAnnotation> = ($: T.OpenObjectToken<GAnnotation>, ) => I.ObjectHandler<GAnnotation>
+    
+    export type OnSimpleString<GAnnotation> = ($: T.SimpleStringToken<GAnnotation>, ) => void
+    
+    export type OnTaggedUnion<GAnnotation> = ($: T.TaggedUnionToken<GAnnotation>, ) => I.TaggedUnionHandler<GAnnotation>
+    
+    export type RequiredValueHandler<GAnnotation> = {
+        'exists': I.ValueHandler<GAnnotation>
+        'missing': I.OnMissing<GAnnotation>
+    }
+    
+    export type TaggedUnionHandler<GAnnotation> = {
+        'missingOption': ($: T.Annotation<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
+        'onEnd': () => void
+        'option': ($: T.SimpleStringToken<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
+    }
+    
+    export type TreeHandler<GAnnotation> = {
+        'onEnd': () => void
+        'root': I.RequiredValueHandler<GAnnotation>
+    }
+    
+    export type ValueHandler<GAnnotation> = {
+        'array': I.OnArray<GAnnotation>
+        'multilineString': I.OnMultilineString<GAnnotation>
+        'object': I.OnObject<GAnnotation>
+        'simpleString': I.OnSimpleString<GAnnotation>
+        'taggedUnion': I.OnTaggedUnion<GAnnotation>
+    }
 }
 
-export type IObjectHandler<GPAnnotation> = {
-    'anonymousProperty': ($: T.Annotation<GPAnnotation>, ) => IValueHandler<GPAnnotation>
-    'onEnd': ($: T.CloseObjectToken<GPAnnotation>, ) => void
-    'property': ($: T.SimpleStringToken<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
-}
+export namespace B {}
 
-export type IOnArray<GPAnnotation> = ($: T.OpenArrayToken<GPAnnotation>, ) => IArrayHandler<GPAnnotation>
-
-export type IOnMissing<GPAnnotation> = ($: T.Annotation<GPAnnotation>, ) => void
-
-export type IOnMultilineString<GPAnnotation> = ($: T.MultilineStringToken<GPAnnotation>, ) => void
-
-export type IOnObject<GPAnnotation> = ($: T.OpenObjectToken<GPAnnotation>, ) => IObjectHandler<GPAnnotation>
-
-export type IOnSimpleString<GPAnnotation> = ($: T.SimpleStringToken<GPAnnotation>, ) => void
-
-export type IOnTaggedUnion<GPAnnotation> = ($: T.TaggedUnionToken<GPAnnotation>, ) => ITaggedUnionHandler<GPAnnotation>
-
-export type IRequiredValueHandler<GPAnnotation> = {
-    'exists': IValueHandler<GPAnnotation>
-    'missing': IOnMissing<GPAnnotation>
-}
-
-export type ITaggedUnionHandler<GPAnnotation> = {
-    'missingOption': ($: T.Annotation<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
-    'onEnd': () => void
-    'option': ($: T.SimpleStringToken<GPAnnotation>, ) => IRequiredValueHandler<GPAnnotation>
-}
-
-export type ITreeHandler<GPAnnotation> = {
-    'onEnd': () => void
-    'root': IRequiredValueHandler<GPAnnotation>
-}
-
-export type IValueHandler<GPAnnotation> = {
-    'array': IOnArray<GPAnnotation>
-    'multilineString': IOnMultilineString<GPAnnotation>
-    'object': IOnObject<GPAnnotation>
-    'simpleString': IOnSimpleString<GPAnnotation>
-    'taggedUnion': IOnTaggedUnion<GPAnnotation>
-}
+export namespace F {}

@@ -5,45 +5,45 @@ export namespace T {
     
     export namespace AnnotatedToken {
         
-        export type annotation<GPAnnotation, AToken> = GPAnnotation
+        export type annotation<GAnnotation, TToken> = GAnnotation
         
-        export type token<GPAnnotation, AToken> = AToken
+        export type token<GAnnotation, TToken> = TToken
     }
     
-    export type AnnotatedToken<GPAnnotation, AToken> = {
-        readonly 'annotation': GPAnnotation
-        readonly 'token': AToken
+    export type AnnotatedToken<GAnnotation, TToken> = {
+        readonly 'annotation': GAnnotation
+        readonly 'token': TToken
     }
     
-    export type Annotation<GPAnnotation> = GPAnnotation
+    export type Annotation<GAnnotation> = GAnnotation
     
     export namespace CloseArray {}
     
-    export type CloseArray<GPAnnotation> = null
+    export type CloseArray<GAnnotation> = null
     
-    export type CloseArrayToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.CloseArray<GPAnnotation>>
+    export type CloseArrayToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.CloseArray<GAnnotation>>
     
     export namespace CloseObject {}
     
-    export type CloseObject<GPAnnotation> = null
+    export type CloseObject<GAnnotation> = null
     
-    export type CloseObjectToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.CloseObject<GPAnnotation>>
+    export type CloseObjectToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.CloseObject<GAnnotation>>
     
     export namespace MultilineString {
         
         export namespace lines {
             
-            export type A<GPAnnotation> = string
+            export type T<GAnnotation> = string
         }
         
-        export type lines<GPAnnotation> = pt.Array<string>
+        export type lines<GAnnotation> = pt.Array<string>
     }
     
-    export type MultilineString<GPAnnotation> = {
+    export type MultilineString<GAnnotation> = {
         readonly 'lines': pt.Array<string>
     }
     
-    export type MultilineStringToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.MultilineString<GPAnnotation>>
+    export type MultilineStringToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.MultilineString<GAnnotation>>
     
     export namespace OpenArray {
         
@@ -51,25 +51,25 @@ export namespace T {
             
             export namespace list {}
             
-            export type list<GPAnnotation> = null
+            export type list<GAnnotation> = null
             
             export namespace shorthand__group {}
             
-            export type shorthand__group<GPAnnotation> = null
+            export type shorthand__group<GAnnotation> = null
         }
         
-        export type _ltype<GPAnnotation> = 
+        export type _ltype<GAnnotation> = 
             | ['list', null]
             | ['shorthand group', null]
     }
     
-    export type OpenArray<GPAnnotation> = {
+    export type OpenArray<GAnnotation> = {
         readonly 'type': 
             | ['list', null]
             | ['shorthand group', null]
     }
     
-    export type OpenArrayToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.OpenArray<GPAnnotation>>
+    export type OpenArrayToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.OpenArray<GAnnotation>>
     
     export namespace OpenObject {
         
@@ -77,62 +77,62 @@ export namespace T {
             
             export namespace dictionary {}
             
-            export type dictionary<GPAnnotation> = null
+            export type dictionary<GAnnotation> = null
             
             export namespace verbose__group {}
             
-            export type verbose__group<GPAnnotation> = null
+            export type verbose__group<GAnnotation> = null
         }
         
-        export type _ltype<GPAnnotation> = 
+        export type _ltype<GAnnotation> = 
             | ['dictionary', null]
             | ['verbose group', null]
     }
     
-    export type OpenObject<GPAnnotation> = {
+    export type OpenObject<GAnnotation> = {
         readonly 'type': 
             | ['dictionary', null]
             | ['verbose group', null]
     }
     
-    export type OpenObjectToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.OpenObject<GPAnnotation>>
+    export type OpenObjectToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.OpenObject<GAnnotation>>
     
     export namespace SimpleString {
         
-        export type value<GPAnnotation> = string
+        export type value<GAnnotation> = string
         
-        export type wrapping<GPAnnotation> = T.Wrapping<GPAnnotation>
+        export type wrapping<GAnnotation> = T.Wrapping<GAnnotation>
     }
     
-    export type SimpleString<GPAnnotation> = {
+    export type SimpleString<GAnnotation> = {
         readonly 'value': string
-        readonly 'wrapping': T.Wrapping<GPAnnotation>
+        readonly 'wrapping': T.Wrapping<GAnnotation>
     }
     
-    export type SimpleStringToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.SimpleString<GPAnnotation>>
+    export type SimpleStringToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.SimpleString<GAnnotation>>
     
     export namespace TaggedUnion {}
     
-    export type TaggedUnion<GPAnnotation> = null
+    export type TaggedUnion<GAnnotation> = null
     
-    export type TaggedUnionToken<GPAnnotation> = T.AnnotatedToken<GPAnnotation, T.TaggedUnion<GPAnnotation>>
+    export type TaggedUnionToken<GAnnotation> = T.AnnotatedToken<GAnnotation, T.TaggedUnion<GAnnotation>>
     
     export namespace Wrapping {
         
         export namespace apostrophe {}
         
-        export type apostrophe<GPAnnotation> = null
+        export type apostrophe<GAnnotation> = null
         
         export namespace none {}
         
-        export type none<GPAnnotation> = null
+        export type none<GAnnotation> = null
         
         export namespace quote {}
         
-        export type quote<GPAnnotation> = null
+        export type quote<GAnnotation> = null
     }
     
-    export type Wrapping<GPAnnotation> = 
+    export type Wrapping<GAnnotation> = 
         | ['apostrophe', null]
         | ['none', null]
         | ['quote', null]
