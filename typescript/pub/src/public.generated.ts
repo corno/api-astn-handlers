@@ -6,14 +6,16 @@ import { T } from './types.generated'
 export namespace I {
     
     export type ArrayHandler<GAnnotation> = {
-        'element': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
-        'onEnd': ($: T.CloseArrayToken<GAnnotation>, ) => void
+        'data': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+        'end': ($: T.CloseArrayToken<GAnnotation>, ) => void
     }
     
     export type ObjectHandler<GAnnotation> = {
-        'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
-        'onEnd': ($: T.CloseObjectToken<GAnnotation>, ) => void
-        'property': ($: T.SimpleStringToken<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
+        'data': {
+            'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => I.ValueHandler<GAnnotation>
+            'property': ($: T.SimpleStringToken<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
+        }
+        'end': ($: T.CloseObjectToken<GAnnotation>, ) => void
     }
     
     export type OnArray<GAnnotation> = ($: T.OpenArrayToken<GAnnotation>, ) => I.ArrayHandler<GAnnotation>
@@ -35,13 +37,7 @@ export namespace I {
     
     export type TaggedUnionHandler<GAnnotation> = {
         'missingOption': ($: T.Annotation<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
-        'onEnd': () => void
         'option': ($: T.SimpleStringToken<GAnnotation>, ) => I.RequiredValueHandler<GAnnotation>
-    }
-    
-    export type TreeHandler<GAnnotation> = {
-        'onEnd': () => void
-        'root': I.RequiredValueHandler<GAnnotation>
     }
     
     export type ValueHandler<GAnnotation> = {
