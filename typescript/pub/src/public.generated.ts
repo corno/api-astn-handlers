@@ -49,6 +49,4 @@ export namespace I {
     }
 }
 
-export namespace B {}
-
 export namespace F {}
