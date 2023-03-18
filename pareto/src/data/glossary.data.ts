@@ -6,7 +6,7 @@ import {
     string,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, interfaceReference, inf, interfaceMethod, typeParameter, glossaryParameter, parametrizedType, type, stream, choice, ref
+    dictionary, group, member, taggedUnion, aInterfaceReference, aInterfaceMethod, typeParameter, glossaryParameter, parametrizedType, type, stream, choice, ref
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -61,32 +61,32 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "none": group({}),
         })),
     }),
-    'type': ['asynchronous', {
+    'asynchronous': {
         'interfaces': d({
             "ArrayHandler": stream(
-                interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")]),
-                interfaceMethod(typeReference("CloseArrayToken")),
+                aInterfaceMethod(typeReference("Annotation"), ['reference', aInterfaceReference("ValueHandler")]),
+                aInterfaceMethod(typeReference("CloseArrayToken")),
             ),
             "ObjectHandler": stream(
                 choice({
-                    "property": interfaceMethod(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")]),
-                    "anonymousProperty": interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("ValueHandler")]),
+                    "property": aInterfaceMethod(typeReference("SimpleStringToken"), ['reference', aInterfaceReference("RequiredValueHandler")]),
+                    "anonymousProperty": aInterfaceMethod(typeReference("Annotation"), ['reference', aInterfaceReference("ValueHandler")]),
                 }),
-                interfaceMethod(typeReference("CloseObjectToken"))
+                aInterfaceMethod(typeReference("CloseObjectToken"))
             ),
-            "OnArray": interfaceMethod(typeReference("OpenArrayToken"), ['reference', interfaceReference("ArrayHandler")]),
-            "OnMissing": interfaceMethod(typeReference("Annotation")),
-            "OnMultilineString": interfaceMethod(typeReference("MultilineStringToken")),
-            "OnObject": interfaceMethod(typeReference("OpenObjectToken"), ['reference', interfaceReference("ObjectHandler")]),
-            "OnSimpleString": interfaceMethod(typeReference("SimpleStringToken")),
-            "OnTaggedUnion": interfaceMethod(typeReference("TaggedUnionToken"), ['reference', interfaceReference("TaggedUnionHandler")]),
+            "OnArray": aInterfaceMethod(typeReference("OpenArrayToken"), ['reference', aInterfaceReference("ArrayHandler")]),
+            "OnMissing": aInterfaceMethod(typeReference("Annotation")),
+            "OnMultilineString": aInterfaceMethod(typeReference("MultilineStringToken")),
+            "OnObject": aInterfaceMethod(typeReference("OpenObjectToken"), ['reference', aInterfaceReference("ObjectHandler")]),
+            "OnSimpleString": aInterfaceMethod(typeReference("SimpleStringToken")),
+            "OnTaggedUnion": aInterfaceMethod(typeReference("TaggedUnionToken"), ['reference', aInterfaceReference("TaggedUnionHandler")]),
             "RequiredValueHandler": choice({
-                "exists": ['reference', interfaceReference("ValueHandler")],
-                "missing": ['reference', interfaceReference("OnMissing")],
+                "exists": ['reference', aInterfaceReference("ValueHandler")],
+                "missing": ['reference', aInterfaceReference("OnMissing")],
             }),
             "TaggedUnionHandler": choice({
-                "option": interfaceMethod(typeReference("SimpleStringToken"), ['reference', interfaceReference("RequiredValueHandler")]),
-                "missingOption": interfaceMethod(typeReference("Annotation"), ['reference', interfaceReference("RequiredValueHandler")]),
+                "option": aInterfaceMethod(typeReference("SimpleStringToken"), ['reference', aInterfaceReference("RequiredValueHandler")]),
+                "missingOption": aInterfaceMethod(typeReference("Annotation"), ['reference', aInterfaceReference("RequiredValueHandler")]),
                 //"onEnd": interfaceMethod(null),
             }),
             // "TreeHandler": ['group', {
@@ -96,13 +96,21 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             //     }),
             // }],
             "ValueHandler": choice({
-                "array": ['reference', interfaceReference("OnArray")],
-                "object": ['reference', interfaceReference("OnObject")],
-                "multilineString": ['reference', interfaceReference("OnMultilineString")],
-                "simpleString": ['reference', interfaceReference("OnSimpleString")],
-                "taggedUnion": ['reference', interfaceReference("OnTaggedUnion")],
+                "array": ['reference', aInterfaceReference("OnArray")],
+                "object": ['reference', aInterfaceReference("OnObject")],
+                "multilineString": ['reference', aInterfaceReference("OnMultilineString")],
+                "simpleString": ['reference', aInterfaceReference("OnSimpleString")],
+                "taggedUnion": ['reference', aInterfaceReference("OnTaggedUnion")],
             }),
         }),
-        'functions': d<g_glossary.T.Glossary._ltype.asynchronous.functions.D<pd.SourceLocation>>({}),
-    }],
+        'constructors': d({}),
+        'functions': d({
+        }),
+    },
+    'synchronous': {
+        'interfaces': d({ }),
+        'constructors': d({}),
+        'functions': d({
+        }),
+    },
 }
