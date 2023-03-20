@@ -103,14 +103,12 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
                 "taggedUnion": ['reference', aInterfaceReference("OnTaggedUnion")],
             }),
         }),
-        'constructors': d({}),
-        'functions': d({
-        }),
+        'algorithms': d({}),
+        
     },
     'synchronous': {
         'interfaces': d({ }),
-        'constructors': d({}),
-        'functions': d({
-        }),
+        'algorithms': d({}),
+        
     },
 }
