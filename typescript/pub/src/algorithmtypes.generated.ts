@@ -14,8 +14,8 @@ export namespace ASYNC {
         
         export type ObjectHandler<GAnnotation> = {
             'data': {
-                'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
-                'property': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
+                readonly 'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+                readonly 'property': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
             }
             'end': ($: T.CloseObjectToken<GAnnotation>, ) => void
         }
@@ -33,21 +33,21 @@ export namespace ASYNC {
         export type OnTaggedUnion<GAnnotation> = ($: T.TaggedUnionToken<GAnnotation>, ) => ASYNC.I.TaggedUnionHandler<GAnnotation>
         
         export type RequiredValueHandler<GAnnotation> = {
-            'exists': ASYNC.I.ValueHandler<GAnnotation>
-            'missing': ASYNC.I.OnMissing<GAnnotation>
+            readonly 'exists': ASYNC.I.ValueHandler<GAnnotation>
+            readonly 'missing': ASYNC.I.OnMissing<GAnnotation>
         }
         
         export type TaggedUnionHandler<GAnnotation> = {
-            'missingOption': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
-            'option': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
+            readonly 'missingOption': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
+            readonly 'option': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
         }
         
         export type ValueHandler<GAnnotation> = {
-            'array': ASYNC.I.OnArray<GAnnotation>
-            'multilineString': ASYNC.I.OnMultilineString<GAnnotation>
-            'object': ASYNC.I.OnObject<GAnnotation>
-            'simpleString': ASYNC.I.OnSimpleString<GAnnotation>
-            'taggedUnion': ASYNC.I.OnTaggedUnion<GAnnotation>
+            readonly 'array': ASYNC.I.OnArray<GAnnotation>
+            readonly 'multilineString': ASYNC.I.OnMultilineString<GAnnotation>
+            readonly 'object': ASYNC.I.OnObject<GAnnotation>
+            readonly 'simpleString': ASYNC.I.OnSimpleString<GAnnotation>
+            readonly 'taggedUnion': ASYNC.I.OnTaggedUnion<GAnnotation>
         }
     }
     
