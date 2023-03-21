@@ -6,7 +6,7 @@ import {
     string,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, aInterfaceReference, aInterfaceMethod, typeParameter, glossaryParameter, parametrizedType, type, stream, choice, ref
+    dictionary, group, member, taggedUnion, aInterfaceReference, aInterfaceMethod, typeParameter, glossaryParameter, parametrizedType, type, streamconsumer, choice, ref
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -63,11 +63,11 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     }),
     'asynchronous': {
         'interfaces': d({
-            "ArrayHandler": stream(
+            "ArrayHandler": streamconsumer(
                 aInterfaceMethod(typeReference("Annotation"), ['reference', aInterfaceReference("ValueHandler")]),
                 aInterfaceMethod(typeReference("CloseArrayToken")),
             ),
-            "ObjectHandler": stream(
+            "ObjectHandler": streamconsumer(
                 choice({
                     "property": aInterfaceMethod(typeReference("SimpleStringToken"), ['reference', aInterfaceReference("RequiredValueHandler")]),
                     "anonymousProperty": aInterfaceMethod(typeReference("Annotation"), ['reference', aInterfaceReference("ValueHandler")]),
