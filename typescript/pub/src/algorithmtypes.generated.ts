@@ -8,13 +8,13 @@ export namespace ASYNC {
     export namespace I {
         
         export type ArrayHandler<GAnnotation> = {
-            'data': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+            'data': ($: GAnnotation, ) => ASYNC.I.ValueHandler<GAnnotation>
             'end': ($: T.CloseArrayToken<GAnnotation>, ) => void
         }
         
         export type ObjectHandler<GAnnotation> = {
             'data': {
-                readonly 'anonymousProperty': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.ValueHandler<GAnnotation>
+                readonly 'anonymousProperty': ($: GAnnotation, ) => ASYNC.I.ValueHandler<GAnnotation>
                 readonly 'property': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
             }
             'end': ($: T.CloseObjectToken<GAnnotation>, ) => void
@@ -22,7 +22,7 @@ export namespace ASYNC {
         
         export type OnArray<GAnnotation> = ($: T.OpenArrayToken<GAnnotation>, ) => ASYNC.I.ArrayHandler<GAnnotation>
         
-        export type OnMissing<GAnnotation> = ($: T.Annotation<GAnnotation>, ) => void
+        export type OnMissing<GAnnotation> = ($: GAnnotation, ) => void
         
         export type OnMultilineString<GAnnotation> = ($: T.MultilineStringToken<GAnnotation>, ) => void
         
@@ -38,7 +38,7 @@ export namespace ASYNC {
         }
         
         export type TaggedUnionHandler<GAnnotation> = {
-            readonly 'missingOption': ($: T.Annotation<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
+            readonly 'missingOption': ($: GAnnotation, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
             readonly 'option': ($: T.SimpleStringToken<GAnnotation>, ) => ASYNC.I.RequiredValueHandler<GAnnotation>
         }
         

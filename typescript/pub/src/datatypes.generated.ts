@@ -15,8 +15,6 @@ export namespace T {
         readonly 'token': TToken
     }
     
-    export type Annotation<GAnnotation> = GAnnotation
-    
     export namespace CloseArray {}
     
     export type CloseArray<GAnnotation> = null
