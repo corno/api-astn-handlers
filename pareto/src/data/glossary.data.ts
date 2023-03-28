@@ -14,6 +14,8 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "Annotation": null,
     }),
     'imports': d({}),
+    'root': {
+        'namespaces': d({}),
     'types': d({
         "AnnotatedToken": parametrizedType({
             "Token": null,
@@ -56,6 +58,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "none": group({}),
         })),
     }),
+    },
     'asynchronous': {
         'interfaces': d({
             "ArrayHandler": aInterface(streamconsumer(
